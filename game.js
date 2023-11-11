@@ -11,7 +11,7 @@ let board = [
 ];
 
 const userPlayer = clc.red("O");
-const cpuPlayer = clc.yellow("X");
+const cpuPlayer = clc.blue("X");
 
 
 function printBoard() {
