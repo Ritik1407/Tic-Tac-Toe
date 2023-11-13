@@ -1,3 +1,4 @@
+const clc = require('cli-color');
 const readline = require("readline").createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -9,8 +10,9 @@ let board = [
   [" ", " ", " "],
 ];
 
-const userPlayer = "O";
-const cpuPlayer = "X";
+const userPlayer = clc.red("O");
+const cpuPlayer = clc.blue("X");
+
 
 function printBoard() {
   for (let i = 0; i < 3; i++) {
@@ -58,9 +60,15 @@ function isTie() {
   return true;
 }
 
+function getRandomMove() {
+  const row = Math.floor(Math.random() * 3);
+  const col = Math.floor(Math.random() * 3);
+  return { row, col };
+}
+
 function cpuMove() {
-  let row = Math.floor(Math.random() * 3);
-  let col = Math.floor(Math.random() * 3);
+  const { row, col } = getRandomMove();
+
   if (board[row][col] === " ") {
     board[row][col] = cpuPlayer;
     if (checkWinner()) {
